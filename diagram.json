@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "author": "Nursena",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": 0, "left": -250, "attrs": {} },
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 317.7,
+      "left": -432.25,
+      "rotate": 270,
+      "attrs": { "env": "micropython-20220618-v1.19.1" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir", "top": -300, "left": -200, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultra", "top": -250, "left": 100, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 400,
+      "left": 50,
+      "rotate": 90,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb",
+      "top": 250,
+      "left": 250,
+      "rotate": 90,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_red",
+      "top": 50,
+      "left": 300,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_green",
+      "top": 100,
+      "left": 300,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_blue",
+      "top": 150,
+      "left": 300,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "pir:VCC", "bb1:1t.e", "red", [] ],
+    [ "pir:GND", "bb1:2t.e", "black", [] ],
+    [ "pir:OUT", "bb1:3t.e", "blue", [] ],
+    [ "ultra:VCC", "bb1:5t.e", "red", [] ],
+    [ "ultra:GND", "bb1:6t.e", "black", [] ],
+    [ "ultra:TRIG", "bb1:7t.e", "green", [] ],
+    [ "ultra:ECHO", "bb1:8t.e", "yellow", [] ],
+    [ "buzzer:1", "bb1:10t.e", "red", [] ],
+    [ "buzzer:2", "bb1:11t.e", "black", [] ],
+    [ "rgb:R", "r_red:2", "red", [] ],
+    [ "rgb:G", "r_green:2", "green", [] ],
+    [ "rgb:B", "r_blue:2", "blue", [] ],
+    [ "rgb:COM", "bb1:15t.e", "black", [] ],
+    [ "r_red:1", "bb1:16t.e", "red", [] ],
+    [ "r_green:1", "bb1:17t.e", "green", [] ],
+    [ "r_blue:1", "bb1:18t.e", "blue", [] ],
+    [ "bb1:1t.d", "pico:3V3", "red", [] ],
+    [ "bb1:2t.d", "pico:GND.1", "black", [] ],
+    [ "bb1:3t.d", "pico:GP16", "blue", [] ],
+    [ "bb1:5t.d", "pico:3V3", "red", [] ],
+    [ "bb1:6t.d", "pico:GND.2", "black", [] ],
+    [ "bb1:7t.d", "pico:GP17", "green", [] ],
+    [ "bb1:8t.d", "pico:GP18", "yellow", [] ],
+    [ "bb1:10t.d", "pico:GP14", "red", [] ],
+    [ "bb1:11t.d", "pico:GND.3", "black", [] ],
+    [ "bb1:15t.d", "pico:GND.4", "black", [] ],
+    [ "bb1:16t.d", "pico:GP19", "red", [] ],
+    [ "bb1:17t.d", "pico:GP20", "green", [] ],
+    [ "bb1:18t.d", "pico:GP21", "blue", [] ]
+  ],
+  "dependencies": {}
+}
